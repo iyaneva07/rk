@@ -1,0 +1,17 @@
+{
+  "name": "rabotnicheska-kultura",
+  "main": "worker.js",
+  "compatibility_date": "2025-01-01",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "rabotnicheska-kultura",
+      "database_id": "REPLACE_WITH_YOUR_D1_DATABASE_ID",
+      "migrations_dir": "migrations"
+    }
+  ]
+}
