@@ -178,6 +178,8 @@
     .order-aside { align-self: start; border-top: 3px solid var(--red); padding-top: 25px; }
     .total-line { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; border-top: 1px solid var(--ink); padding-top: 19px; margin-top: 28px; font-size: 14px; }
     .total-line strong { font-size: 25px; white-space: nowrap; }
+      .order-total-amount { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; text-align: right; }
+    .order-total-amount small { font-size: 12px; line-height: 1.3; font-weight: 500; }
     .order-aside p { margin: 25px 0 32px; font-size: 13px; line-height: 1.5; }
     .order-aside .primary-button { width: 100%; }
     .order-aside .text-link { margin-top: 34px; }
