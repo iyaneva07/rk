@@ -155,4 +155,3 @@ export {
   "names": []
 }
 
-This folder contains the built output assets for the worker "rabotnicheska-kultura" generated at 2026-10-30T03:55:50.547Z.
