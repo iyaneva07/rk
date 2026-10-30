@@ -40,11 +40,13 @@
     .text-link .arrow { display: inline-flex; font-size: 19px; line-height: 1; font-weight: 400; }
     .book-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(16px, 2.4vw, 38px); }
     .book-card { min-width: 0; }
-    .book-stage { width: 100%; min-width: 0; aspect-ratio: 1 / 1.17; background: var(--line); display: flex; align-items: center; justify-content: center; padding: clamp(22px, 2.3vw, 36px); overflow: hidden; }
+      .book-stage { --stage-padding: clamp(22px, 2.3vw, 36px); width: 100%; min-width: 0; aspect-ratio: 1 / 1.17; background: var(--line); display: flex; align-items: center; justify-content: center; padding: var(--stage-padding); overflow: hidden; }
+    .book-card .book-stage { position: relative; }
     .book-cover { width: min(100%, 276px); aspect-ratio: .705; position: relative; overflow: hidden; display: flex; flex-direction: column; padding: 7% 7% 6%; background: var(--white); color: var(--ink); box-shadow: 10px 13px 0 var(--ink); transition: transform .25s ease, box-shadow .25s ease; }
     .book-card:hover .book-cover { transform: translateY(-6px); box-shadow: 12px 19px 0 var(--ink); }
     .cover-image { display: block; width: auto; height: auto; min-width: 0; max-width: min(100%, 276px); max-height: 100%; object-fit: contain; box-shadow: 10px 13px 0 var(--ink); transition: transform .25s ease, box-shadow .25s ease; }
-    .book-card:hover .cover-image { transform: translateY(-6px); box-shadow: 12px 19px 0 var(--ink); }
+   .book-card .cover-image { position: absolute; top: 50%; left: 50%; max-width: min(276px, calc(100% - var(--stage-padding) - var(--stage-padding) - 13px)); max-height: calc(100% - var(--stage-padding) - var(--stage-padding) - 13px); transform: translate(-50%, -50%); }
+    .book-card:hover .cover-image { transform: translate(-50%, -50%) translateY(-6px); box-shadow: 12px 19px 0 var(--ink); }
     .cover-top, .cover-bottom { position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: flex-start; gap: 6px; font-size: clamp(7px, .75vw, 11px); line-height: 1.1; font-weight: 900; letter-spacing: .02em; text-transform: uppercase; }
     .cover-top span:last-child { text-align: right; }
     .cover-main { position: relative; z-index: 1; margin: auto 0; font-size: clamp(23px, 2.65vw, 43px); line-height: .94; letter-spacing: -.072em; font-weight: 900; text-transform: uppercase; overflow-wrap: anywhere; }
