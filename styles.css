@@ -138,10 +138,10 @@
     .detail-page { padding-block: clamp(40px, 5vw, 76px) clamp(105px, 12vw, 180px); }
     .detail-page .article-back { margin-bottom: clamp(45px, 6vw, 90px); }
     .detail-layout { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(35px, 7vw, 110px); }
-    .detail-stage { aspect-ratio: 1 / 1.08; padding: clamp(24px, 4vw, 50px); }
+    detail-stage { --stage-padding: clamp(24px, 4vw, 50px); position: relative; aspect-ratio: 1 / 1.08; }
     .detail-stage .book-cover { width: min(72%, 350px); }
     .book-gallery { min-width: 0; align-self: start; }
-    .detail-stage .detail-image { display: block; width: auto; height: auto; min-width: 0; max-width: min(100%, 440px); max-height: 100%; object-fit: contain; box-shadow: 10px 13px 0 var(--ink); }
+    .detail-stage .detail-image { display: block; position: absolute; top: 50%; left: 50%; width: auto; height: auto; min-width: 0; max-width: min(440px, calc(100% - var(--stage-padding) - var(--stage-padding) - 13px)); max-height: calc(100% - var(--stage-padding) - var(--stage-padding) - 13px); object-fit: contain; box-shadow: 10px 13px 0 var(--ink); transform: translate(-50%, -50%); }
     .gallery-controls { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--ink); padding: 9px 0; }
     .gallery-controls button { display: inline-flex; align-items: center; justify-content: center; border: 0; background: none; color: var(--ink); font-size: 24px; cursor: pointer; padding: 8px 16px; }
     .gallery-controls button:hover { color: var(--red); }
