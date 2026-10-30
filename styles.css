@@ -141,7 +141,7 @@
     detail-stage { --stage-padding: clamp(24px, 4vw, 50px); position: relative; aspect-ratio: 1 / 1.08; }
     .detail-stage .book-cover { width: min(72%, 350px); }
     .book-gallery { min-width: 0; align-self: start; }
-    .detail-stage .detail-image { display: block; position: absolute; top: 50%; left: 50%; width: auto; height: auto; min-width: 0; max-width: min(440px, calc(100% - var(--stage-padding) - var(--stage-padding) - 13px)); max-height: calc(100% - var(--stage-padding) - var(--stage-padding) - 13px); object-fit: contain; box-shadow: 10px 13px 0 var(--ink); transform: translate(-50%, -50%); }
+    .detail-stage .detail-image { display: block; position: absolute; top: 50%; left: 50%; width: min(55%, 340px); height: auto; min-width: 0; object-fit: contain; box-shadow: 10px 13px 0 var(--ink); transform: translate(-50%, -50%); }
     .gallery-controls { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--ink); padding: 9px 0; }
     .gallery-controls button { display: inline-flex; align-items: center; justify-content: center; border: 0; background: none; color: var(--ink); font-size: 24px; cursor: pointer; padding: 8px 16px; }
     .gallery-controls button:hover { color: var(--red); }
