@@ -1,7 +1,7 @@
 const books = [
   {
     id: 'stasi-state-or-socialist-paradise', category: 'history', pages: 243, priceCents: 1100,
-    isbn: '978-619-93996-0-6', dimensionsMm: '176х112', images: ['ddr_korica_predna.png', 'ddr_korica_zadna.png', ...Array.from({ length: 10 }, (_, index) => `assets/stasi-page-${String(index + 1).padStart(2, '0')}.webp`)], epub: 'assets/Stasi_durzhava_ili_sozialisticheski_rai.epub',
+    isbn: '978-619-93996-0-6', dimensionsMm: '176х112', images: ['assets/ddr_korica_predna.png', 'assets/ddr_korica_zadna.png', ...Array.from({ length: 10 }, (_, index) => `assets/stasi-page-${String(index + 1).padStart(2, '0')}.webp`)], epub: 'assets/Stasi_durzhava_ili_sozialisticheski_rai.epub',
     bg: {
       title: 'Щази държава или социалистически рай?', author: 'Бруни де ла Моте и Джон Грийн', cover: ['КАПИТАЛъТ том 1'], top: '01', bottom: 'Карл Маркс',
       description: [
