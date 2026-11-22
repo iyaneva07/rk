@@ -76,7 +76,7 @@ async function createOrder(request, env, ctx) {
   try { input = JSON.parse(raw); } catch { return json({ error: 'INVALID_REQUEST' }, 400); }
   const customer = input?.customer;
   const items = input?.items;
-  if (!customer || !Array.isArray(items) || items.length < 1 || items.length > 6 ||
+   if (!customer || input.privacyAcknowledged !== true || !Array.isArray(items) || items.length < 1 || items.length > 6 ||
       !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(input.idempotencyKey || '') ||
       (input.language !== undefined && !['bg', 'en'].includes(input.language)) ||
       !Number.isSafeInteger(input.expectedTotalCents) || input.expectedTotalCents < 1 ||
