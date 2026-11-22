@@ -33,7 +33,10 @@
       <div class="footer-contacts" id="footer-contacts"></div>
       <a class="footer-top" href="#home" id="footer-top">Към началото</a>
     </div>
+     <div class="site-shell footer-legal"><button type="button" data-open-legal="cookies" id="footer-cookies"></button><button type="button" data-open-legal="privacy" id="footer-privacy"></button></div>
   </footer>
+   <div id="cookie-notice" class="cookie-notice" role="region" aria-label="Информация за съхранението" hidden><p id="cookie-notice-text"></p><div class="cookie-actions"><button type="button" class="legal-link" data-open-legal="cookies" id="cookie-details"></button><button type="button" class="cookie-acknowledge" id="cookie-acknowledge"></button></div></div>
+  <dialog id="legal-dialog" class="legal-dialog" aria-labelledby="legal-dialog-title"><div class="legal-dialog-header"><h2 id="legal-dialog-title"></h2><button type="button" class="legal-close" data-close-legal aria-label="Затвори">×</button></div><div id="legal-dialog-body" class="legal-dialog-body"></div><button type="button" class="legal-dismiss" data-close-legal></button></dialog>
   <script src="books.js"></script>
   <script src="articles.js"></script>
   <script>
@@ -81,6 +84,18 @@
         orderTag: 'The final step', orderTitle: 'Order', orderIntro: 'Leave your details and we will contact you to confirm availability and delivery.', contact: 'Your details', name: 'Full name', email: 'Email', phone: 'Phone', address: 'Delivery address', city: 'City', postal: 'Postal code', note: 'Note (optional)', summary: 'Your order', placeOrder: 'Send order request', sending: 'Sending…', orderNotice: 'This is an order request. Delivery and payment are arranged after confirmation by email. You are not charged now.', orderError: 'We could not send your request. Please try again.', serviceUnavailable: 'Orders are temporarily unavailable. Please try again later.', changedPrices: 'The catalogue has changed. Review the total and submit again.',
         successTag: 'Request received', successTitle: 'Thank you.', successIntro: 'Your request has been received. We will email you to confirm availability, delivery, and payment.', orderNumber: 'Request number', noOrderNumber: 'Please check the email address you provided.',
         delivery: 'Delivery courier', deliveryEcont: 'Econt', deliverySpeedy: 'Speedy', isbn: 'ISBN', dimensions: 'Dimensions', downloadEpub: 'Download EPUB', epubUnavailable: 'EPUB unavailable', image: 'Image', previousImage: 'Previous image', nextImage: 'Next image', contactLabel: 'Contact', emailLabel: 'Email', addressLabel: 'Address'
+      }
+    };
+    const legal = {
+      bg: {
+        notice: 'Използваме само необходимо локално съхранение за кошницата и езика. Доставчикът на сайта може да използва технически бисквитки за сигурност.', details: 'Научете повече', acknowledge: 'Разбрах', cookies: 'Съхранение и бисквитки', privacy: 'Политика за поверителност', close: 'Затвори', privacyCheck: 'Прочетох и съм запознат/а с', privacyLink: 'Политиката за поверителност',
+        cookiesBody: `<p>Сайтът не задава рекламни или аналитични бисквитки. За работата на магазина браузърът запазва данни в локалното и сесийното хранилище. Те са необходими за кошницата, избрания език и коректното изпращане на заявка.</p><ul><li><strong>rk-cart</strong> — избраните книги и брой; остава до изчистване на кошницата или данните на браузъра.</li><li><strong>rk-language</strong> — избраният език; остава до изчистване на данните на браузъра.</li><li><strong>rk-cookie-notice</strong> — отбелязва, че сте затворили това съобщение; остава до изчистване на данните на браузъра.</li><li><strong>rk-checkout-key</strong> и <strong>rk-last-order</strong> — предотвратяват повторна заявка и показват номера ѝ; изтриват се при затваряне на сесията или по-рано според действието.</li></ul><p>Доставчикът на хостинг Cloudflare може да задава технически бисквитки, когато това е необходимо за сигурността на услугата. Можете да изтриете съхранените данни от настройките на браузъра; кошницата и запазеният език ще се нулират. Не използваме съхранените данни за реклама или проследяване.</p>`,
+        privacyBody: `<h3>Администратор и контакт</h3><p>Работническа култура, гр. Ботевград, ж.к. Север, бл. 5, вх. А; <a href="mailto:contact@rabotkult.com">contact@rabotkult.com</a>. Правното наименование и ЕИК на търговеца трябва да се добавят преди публикуване на магазина.</p><h3>Какви данни обработваме и защо</h3><p>При заявка за поръчка обработваме име, имейл, телефон (ако е посочен), избран куриер, адрес и пощенски код, бележка (ако е посочена), избрани книги, количества и цена. Използваме ги за приемане и изпълнение на заявката и комуникация с вас — основание чл. 6, пар. 1, б. „б“ от GDPR (действия по договор). Когато законът го изисква, обработваме необходимите данни за данъчни и счетоводни задължения — чл. 6, пар. 1, б. „в“. За сигурността на услугата и предотвратяване на злоупотреби могат да се обработват технически данни на основание легитимен интерес — чл. 6, пар. 1, б. „е“.</p><h3>Получатели и предаване</h3><p>Данните по поръчката се съхраняват чрез Cloudflare (хостинг и база данни D1). Изпращаме потвърждения чрез Resend. След уточняване на доставка необходимите данни могат да бъдат предоставени на избрания от вас куриер — Еконт или Спиди. Доставчиците могат да обработват данни извън Европейското икономическо пространство съгласно приложимите механизми за защита; поискайте подробности на посочения имейл.</p><h3>Срокове</h3><p>Съхраняваме данните за времето, необходимо за обработване на заявката и уреждане на свързаните с нея въпроси, след което за приложимите срокове за счетоводни/данъчни задължения и защита на правни претенции. Данните в браузъра се пазят до изтриването им или до приключване на сесията, както е описано в информацията за съхранението.</p><h3>Вашите права</h3><p>Можете да поискате достъп, поправка, изтриване, ограничаване, преносимост на данните и да възразите срещу обработване на основание легитимен интерес, когато са налице законовите предпоставки. Пишете на <a href="mailto:contact@rabotkult.com">contact@rabotkult.com</a>. Имате право на жалба до Комисията за защита на личните данни. Отбелязването на квадратчето при поръчка потвърждава, че сте се запознали с тази информация; то не замества правните основания за обработване.</p>`
+      },
+      en: {
+        notice: 'We use only essential local storage for your cart and language. The hosting provider may use technical security cookies.', details: 'Learn more', acknowledge: 'Got it', cookies: 'Storage and cookies', privacy: 'Privacy policy', close: 'Close', privacyCheck: 'I have read and understood the', privacyLink: 'Privacy policy',
+        cookiesBody: `<p>This site does not set advertising or analytics cookies. Your browser stores data in local and session storage so the shop can retain your cart and language and submit an order request reliably.</p><ul><li><strong>rk-cart</strong> — selected books and quantities; retained until you clear the cart or browser data.</li><li><strong>rk-language</strong> — preferred language; retained until you clear browser data.</li><li><strong>rk-cookie-notice</strong> — remembers that you dismissed this notice; retained until you clear browser data.</li><li><strong>rk-checkout-key</strong> and <strong>rk-last-order</strong> — prevent duplicate submissions and display your order number; removed when the session ends or earlier as appropriate.</li></ul><p>Our hosting provider Cloudflare may set technical cookies where needed for service security. You can clear stored data in your browser settings; this resets your cart and language. We do not use stored data for advertising or tracking.</p>`,
+        privacyBody: `<h3>Controller and contact</h3><p>Workers’ Culture (Работническа култура), Botevgrad, Sever Residential District, Bl. 5, Entrance A; <a href="mailto:contact@rabotkult.com">contact@rabotkult.com</a>. The trader’s legal name and registration number must be added before publication.</p><h3>Information we process and why</h3><p>For an order request we process your name, email address, phone (if supplied), selected courier, delivery address and postcode, note (if supplied), selected books, quantities and price. We use these to process your request and communicate with you under GDPR Article 6(1)(b) (steps relating to a contract). Where required by law, we process necessary information for tax and accounting obligations under Article 6(1)(c). Technical data may be processed for service security and abuse prevention on the basis of legitimate interests under Article 6(1)(f).</p><h3>Recipients and transfers</h3><p>Orders are stored using Cloudflare (hosting and D1 database). Transactional emails are sent using Resend. Once delivery is arranged, necessary details may be shared with your chosen courier, Econt or Speedy. Providers may process information outside the European Economic Area under applicable data-transfer safeguards; contact us for details.</p><h3>Retention</h3><p>We retain information for as long as needed to process the order request and resolve related matters, then for applicable accounting/tax obligations and legal claims. Browser storage remains until cleared or until the session ends, as described in the storage notice.</p><h3>Your rights</h3><p>Where the legal conditions apply, you may request access, correction, deletion, restriction or portability of your information, and object to processing based on legitimate interests. Contact <a href="mailto:contact@rabotkult.com">contact@rabotkult.com</a>. You may complain to the Bulgarian Commission for Personal Data Protection. Checking the box at checkout acknowledges that you have read this notice; it does not replace the legal grounds for processing.</p>`
       }
     };
 
@@ -224,12 +239,29 @@
       return `<div class="site-shell"><section class="page-intro" aria-labelledby="page-heading"><span class="eyebrow">${u.orderTag}</span><h1 id="page-heading" tabindex="-1">${u.orderTitle}</h1><p>${u.orderIntro}</p></section><div class="checkout-layout"><form id="order-form" class="order-form"><h2>${u.contact}</h2><div class="form-grid"><label class="full-field">${u.name}<input name="name" autocomplete="name" required minlength="2" maxlength="100"></label><label>${u.email}<input name="email" type="email" autocomplete="email" required maxlength="254"></label><label>${u.phone}<input name="phone" type="tel" autocomplete="tel" maxlength="30"></label></div>
         <fieldset class="delivery-choices"><legend>${u.delivery}</legend><div class="courier-options"><label><input type="radio" name="courier" value="econt" required><span><img src="assets/econt-logo.svg" alt="${u.deliveryEcont}" width="170" height="38"></span></label><label><input type="radio" name="courier" value="speedy" required><span><img src="assets/speedy-logo.svg" alt="${u.deliverySpeedy}" width="170" height="51"></span></label></div></fieldset>
         <div class="form-grid"><label class="full-field">${u.address}<input name="address" autocomplete="street-address" required minlength="5" maxlength="200"></label><label>${u.city}<input name="city" autocomplete="address-level2" required minlength="2" maxlength="100"></label><label>${u.postal}<input name="postalCode" autocomplete="postal-code" required minlength="3" maxlength="20"></label></div>
-        <div class="form-grid"><label class="full-field note-field">${u.note}<textarea name="note" rows="4" maxlength="500"></textarea></label></div><p id="order-error" class="form-error" role="alert" tabindex="-1" hidden></p><button class="primary-button" type="submit" ${submitting ? 'disabled' : ''}>${submitting ? u.sending : u.placeOrder}<span aria-hidden="true">${arrowIcon('upRight')}</span></button></form><aside class="order-aside" id="order-summary">${orderSummary()}</aside></div></div>`;
+        <div class="form-grid"><label class="full-field note-field">${u.note}<textarea name="note" rows="4" maxlength="500"></textarea></label></div><div class="privacy-acknowledgment"><input type="checkbox" id="privacy-acknowledged" name="privacyAcknowledged" aria-label="${legal[language].privacyCheck} ${legal[language].privacyLink}" required><label for="privacy-acknowledged">${legal[language].privacyCheck}</label> <button type="button" class="legal-link" data-open-legal="privacy">${legal[language].privacyLink}</button></div><p id="order-error" class="form-error" role="alert" tabindex="-1" hidden></p><button class="primary-button" type="submit" ${submitting ? 'disabled' : ''}>${submitting ? u.sending : u.placeOrder}<span aria-hidden="true">${arrowIcon('upRight')}</span></button></form><aside class="order-aside" id="order-summary">${orderSummary()}</aside></div></div>`;
     }
 
     function confirmationView() {
       const u = commerce[language];
       return `<div class="site-shell confirmation"><span class="eyebrow accent">${u.successTag}</span><h1 id="page-heading" tabindex="-1">${u.successTitle}</h1><p>${u.successIntro}</p>${lastOrder && lastOrder.id ? `<div class="confirmation-number"><span class="eyebrow">${u.orderNumber}</span><strong>${lastOrder.id}</strong></div>` : `<p>${u.noOrderNumber}</p>`}<a href="#shop" class="text-link">${u.browseBooks}<span class="arrow" aria-hidden="true">${arrowIcon('upRight')}</span></a></div>`;
+    }
+    function renderLegal() {
+      const text = legal[language];
+      const notice = document.getElementById('cookie-notice');
+      notice.setAttribute('aria-label', text.cookies);
+      document.getElementById('cookie-notice-text').textContent = text.notice;
+      document.getElementById('cookie-details').textContent = text.details;
+      document.getElementById('cookie-acknowledge').textContent = text.acknowledge;
+      document.getElementById('footer-cookies').textContent = text.cookies;
+      document.getElementById('footer-privacy').textContent = text.privacy;
+      document.querySelector('.legal-close').setAttribute('aria-label', text.close);
+      document.querySelector('.legal-dismiss').textContent = text.close;
+      const dialog = document.getElementById('legal-dialog');
+      if (dialog.open) {
+        document.getElementById('legal-dialog-title').textContent = text[dialog.dataset.section];
+        document.getElementById('legal-dialog-body').innerHTML = text[`${dialog.dataset.section}Body`];
+      }
     }
 
     function render(focusHeading = false) {
@@ -259,6 +291,7 @@
       const email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contacts.email) ? `<a href="mailto:${encodeURIComponent(contacts.email)}">${emailIcon} ${escapeHtml(contacts.email)}</a>` : `<span>${emailIcon} ${u.emailLabel} —</span>`;
       document.getElementById('footer-contacts').innerHTML = `<span class="eyebrow">${u.contactLabel}</span>${instagram}${email}<span class="footer-address"><strong>${u.addressLabel}</strong> ${contacts.address[language] ? escapeHtml(contacts.address[language]) : '—'}</span>`;
       document.getElementById('footer-top').innerHTML = `${escapeHtml(t.backTop)} ${arrowIcon('up')}`;
+      renderLegal();
       const views = { home: homeView, shop: shopView, blog: blogView, cart: cartView, order: orderView, confirmation: confirmationView };
       main.innerHTML = current.view === 'article' ? articleView(current.article) : current.view === 'book' ? bookView(current.book) : views[current.view]();
       const title = current.view === 'article' ? current.article[language].title : current.view === 'book' ? current.book[language].title : t.pageTitle[current.view];
@@ -318,10 +351,27 @@
       if (values) Object.entries(values).forEach(([name, value]) => {
         const input = main.querySelector(`[name="${name}"]`);
         if (input?.type === 'radio') main.querySelector(`[name="${name}"][value="${value}"]`).checked = true;
+        else if (input?.type === 'checkbox') input.checked = true;
         else if (input) input.value = value;
       });
       document.querySelector(`[data-lang="${language}"]`).focus();
     }));
+    document.addEventListener('click', event => {
+      const opener = event.target.closest('[data-open-legal]');
+      if (opener) {
+        const dialog = document.getElementById('legal-dialog');
+        dialog.dataset.section = opener.dataset.openLegal;
+        document.getElementById('legal-dialog-title').textContent = legal[language][dialog.dataset.section];
+        document.getElementById('legal-dialog-body').innerHTML = legal[language][`${dialog.dataset.section}Body`];
+        dialog.showModal();
+        return;
+      }
+      if (event.target.closest('[data-close-legal]')) document.getElementById('legal-dialog').close();
+      if (event.target.closest('#cookie-acknowledge')) {
+        document.getElementById('cookie-notice').hidden = true;
+        try { localStorage.setItem('rk-cookie-notice', 'dismissed'); } catch {}
+      }
+    });
 
     main.addEventListener('click', event => {
       const galleryButton = event.target.closest('[data-gallery], [data-gallery-index]');
@@ -394,7 +444,12 @@
         return;
       }
       const form = event.target;
+      if (!form.querySelector('#privacy-acknowledged').checked) {
+        form.querySelector('#privacy-acknowledged').reportValidity();
+        return;
+      }
       const customer = Object.fromEntries(new FormData(form));
+      delete customer.privacyAcknowledged;
       const button = form.querySelector('[type="submit"]');
       const error = form.querySelector('#order-error');
       error.hidden = true;
@@ -410,8 +465,7 @@
         const response = await fetch('/api/orders', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ customer, language, items: cart.map(item => ({ id: item.id, quantity: item.quantity })), expectedTotalCents: cartTotal(), idempotencyKey: key })
-        });
+          body: JSON.stringify({ customer, privacyAcknowledged: true, language, items: cart.map(item => ({ id: item.id, quantity: item.quantity })), expectedTotalCents: cartTotal(), idempotencyKey: key })
         const result = await response.json().catch(() => ({}));
         if (!response.ok) {
           if (response.status === 409 && ['PRICE_CHANGED', 'UNAVAILABLE'].includes(result.error)) {
@@ -441,6 +495,7 @@
     });
 
     window.addEventListener('hashchange', () => { galleryIndex = 0; render(true); });
+     try { document.getElementById('cookie-notice').hidden = localStorage.getItem('rk-cookie-notice') === 'dismissed'; } catch { document.getElementById('cookie-notice').hidden = false; }
     render();
     loadCatalog();
   </script>
