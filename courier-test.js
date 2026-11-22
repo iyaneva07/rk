@@ -44,6 +44,7 @@ const order = {
   customer: { name: 'Test Customer', email: 'test@example.com', phone: '0888123456', courier: 'econt', address: 'ул. Тест 1', city: 'София', postalCode: '1000' },
   items: [{ id: 'stasi-state-or-socialist-paradise', quantity: 1 }],
   expectedTotalCents: 1100,
+  privacyAcknowledged: true,
   idempotencyKey: crypto.randomUUID()
 };
 const catalog = await worker.fetch(new Request('https://example.test/api/catalog'), env);
@@ -83,6 +84,8 @@ await worker.scheduled(null, env, context);
 await pending;
 assert.equal(notifications.find(row => row.order_id === retryId && row.kind === 'owner').sent, true);
 assert.equal(deliveries[6].headers['Idempotency-Key'], deliveries[8].headers['Idempotency-Key']);
+assert.equal((await send({ ...order, idempotencyKey: crypto.randomUUID(), privacyAcknowledged: false })).status, 400);
+assert.equal((await send({ ...order, idempotencyKey: crypto.randomUUID(), privacyAcknowledged: undefined })).status, 400);
 assert.equal((await send({ ...order, idempotencyKey: crypto.randomUUID(), customer: { ...order.customer, courier: 'invalid' } })).status, 400);
 assert.equal((await send({ ...order, idempotencyKey: crypto.randomUUID(), customer: { ...order.customer, courier: undefined } })).status, 400);
 assert.equal((await send({ ...order, idempotencyKey: crypto.randomUUID(), customer: { ...order.customer, address: '' } })).status, 400);
