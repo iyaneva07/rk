@@ -515,6 +515,7 @@
     });
 
     window.addEventListener('hashchange', () => { galleryIndex = 0; render(true); });
+	try { document.getElementById('cookie-notice').hidden = localStorage.getItem('rk-cookie-notice') === 'dismissed'; } catch { document.getElementById('cookie-notice').hidden = false; }
     render();
     loadCatalog();
   </script>
