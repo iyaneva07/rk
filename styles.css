@@ -125,6 +125,7 @@
     .footer-address { overflow-wrap: anywhere; }
     .footer-address strong { display: block; margin-bottom: 3px; font-size: 11px; text-transform: uppercase; }
 .footer-legal { display: flex; flex-wrap: wrap; gap: 14px 28px; margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--line); }
+.footer-entity { flex-basis: 100%; font-size: 12px; line-height: 1.5; font-weight: 800; color: var(--red); overflow-wrap: anywhere; }
     .footer-legal button, .legal-link { border: 0; border-bottom: 1px solid currentColor; border-radius: 0; background: none; color: inherit; padding: 0 0 2px; cursor: pointer; font: inherit; text-align: left; }
     .footer-legal button { font-size: 12px; }
     .footer-legal button:hover, .legal-link:hover { color: var(--red); }
