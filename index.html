@@ -33,7 +33,7 @@
       <div class="footer-contacts" id="footer-contacts"></div>
       <a class="footer-top" href="#home" id="footer-top">Към началото</a>
     </div>
-	 <div class="site-shell footer-legal"><button type="button" data-open-legal="cookies" id="footer-cookies"></button><button type="button" data-open-legal="privacy" id="footer-privacy"></button></div>
+	   <div class="site-shell footer-legal"><span class="footer-entity" id="footer-entity"></span><button type="button" data-open-legal="cookies" id="footer-cookies"></button><button type="button" data-open-legal="privacy" id="footer-privacy"></button></div>
   </footer>
   <div id="cookie-notice" class="cookie-notice" role="region" aria-label="Информация за съхранението" hidden><p id="cookie-notice-text"></p>
 	<div class="cookie-actions"><button type="button" class="legal-link" data-open-legal="cookies" id="cookie-details"></button>
@@ -52,6 +52,7 @@
   <script src="articles.js"></script>
   <script>
     const contacts = { instagram: 'https://www.instagram.com/rabotkult/', email: 'contact@rabotkult.com', address: { bg: 'гр. Ботевград, ж.к. Север, бл. 5, вх. А', en: 'Botevgrad, Sever Residential District, Bl. 5, Entrance A' } };
+	const exampleTrader = { bg: 'ПРИМЕРНИ ДАННИ — „Примерно дружество“ ЕООД · ЕИК 0000000000 (невалиден)', en: 'EXAMPLE ONLY — “Example Company” EOOD · UIC 0000000000 (invalid)' };
     const content = {
       bg: {
         brand: 'Работническа култура', nav: ['Начало', 'Книги', 'Блог', 'Кошница'], navigation: 'Основна навигация', language: 'Език', bgLabel: 'Български', enLabel: 'English',
